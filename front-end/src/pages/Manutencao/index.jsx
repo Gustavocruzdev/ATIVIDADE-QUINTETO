@@ -2,61 +2,68 @@
     import React, { useState } from 'react';
     import './style.css';
 
-    export default function SolicitacaoManutencaoAtivos() {
+    export default function Manutencao() {
     const [formData, setFormData] = useState({
-        idEquipamento: '',
-        criticidade: '',
-        descricaoFalha: ''
+        equipamentoId: '',
+        criticidade: 'baixa',
+        descricao: ''
     });
 
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setFormData({ ...formData, [name]: value });
-    };
-
-    const handleSubmit = async (e) => {
+    const handleSubmit = (e) => {
         e.preventDefault();
-        try {
-        await api.post('/manutencoes', formData);
-        alert('⚙️ Ordem de Serviço aberta e encaminhada ao time de Engenharia de Confiabilidade!');
-        setFormData({ idEquipamento: '', criticidade: '', descricaoFalha: '' });
-        } catch (error) {
-        const errorMsg = error.response?.data?.mensagem || 'Falha ao processar abertura de manutenção.';
-        alert(`Erro na solicitação: ${errorMsg}`);
-        }
+        // Aqui vai o fetch/axios para o Spring Boot depois
+        console.log(formData);
     };
 
     return (
-        <div className="aoe-form-container">
-        <div className="aoe-form-card">
-            <h2>Solicitação de Manutenção de Ativos</h2>
-            <p className="aoe-form-subtitle">Abertura de Ordens de Serviço Corretivas e Preditivas para Equipamentos Críticos.</p>
-            
-            <form onSubmit={handleSubmit} className="aoe-form-grid">
-            <div className="aoe-input-group">
-                <label>Código / Tag do Ativo (ID)</label>
-                <input name="idEquipamento" value={formData.idEquipamento} placeholder="Ex: TURB-01, BROCA-X5" required onChange={handleChange} />
-            </div>
+        <div className="maintenance">
+            <div className="maintenance-container">
+                <div className="maintenance-text">
+                    <h1>Solicitação de Manutenção</h1>
+                    <p>Abertura de ordens de serviço para ativos e equipamentos das plataformas da Bacia de Santos. Preencha os dados técnicos da falha com atenção.</p>
+                </div>
 
-            <div className="aoe-input-group">
-                <label>Nível de Criticidade do Equipamento</label>
-                <select name="criticidade" value={formData.criticidade} required onChange={handleChange}>
-                <option value="">Selecione...</option>
-                <option value="ROTINA">Rotina (Não afeta produção direta)</option>
-                <option value="URGENTE">Urgente (Degradação de performance)</option>
-                <option value="EMERGENCIA">Emergência (Equipamento inoperante / Linha parada)</option>
-                </select>
-            </div>
+                <div className="maintenance-form-box">
+                    <h2>Nova Ordem de Serviço</h2>
+                    <form onSubmit={handleSubmit}>
+                        <div className="form-group">
+                            <label>ID do Equipamento</label>
+                            <input 
+                                type="text" 
+                                placeholder="Ex: TURB-01, BROCA-05"
+                                value={formData.equipamentoId}
+                                onChange={(e) => setFormData({...formData, equipamentoId: e.target.value})}
+                                required 
+                            />
+                        </div>
 
-            <div className="aoe-input-group aoe-full-width">
-                <label>Descrição Detalhada da Falha / Sintomas</label>
-                <textarea name="descricaoFalha" value={formData.descricaoFalha} placeholder="Ex: Vibração anormal nos mancais, perda de pressão na linha hidráulica, superaquecimento..." required onChange={handleChange} />
-            </div>
+                        <div className="form-group">
+                            <label>Criticidade</label>
+                            <select 
+                                value={formData.criticidade}
+                                onChange={(e) => setFormData({...formData, criticidade: e.target.value})}
+                            >
+                                <option value="baixa">Baixa</option>
+                                <option value="media">Média</option>
+                                <option value="alta">Alta</option>
+                                <option value="critica">Crítica (Parada de Produção)</option>
+                            </select>
+                        </div>
 
-            <button type="submit" className="aoe-btn-submit">Gerar Ordem de Manutenção</button>
-            </form>
-        </div>
+                        <div className="form-group">
+                            <label>Descrição da Falha</label>
+                            <textarea 
+                                placeholder="Descreva detalhadamente a anomalia identificada no ativo..."
+                                value={formData.descricao}
+                                onChange={(e) => setFormData({...formData, descricao: e.target.value})}
+                                required
+                            ></textarea>
+                        </div>
+
+                        <button type="submit">Enviar Solicitação</button>
+                    </form>
+                </div>
+            </div>
         </div>
     );
-    }
-
+}
