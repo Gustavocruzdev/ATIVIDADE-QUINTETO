@@ -1,6 +1,7 @@
 package com.example.projeto_aoe.controller;
 
 import com.example.projeto_aoe.dto.IncidenteRequestDTO;
+import com.example.projeto_aoe.dto.IncidenteResponseDTO;
 import com.example.projeto_aoe.model.IncidenteModel;
 import com.example.projeto_aoe.service.IncidenteService;
 import jakarta.validation.Valid;
@@ -19,43 +20,44 @@ public class IncidenteController {
     @Autowired
     private IncidenteService service;
 
-    // CRIAR (POST) - Recebe o DTO do React, converte para o Modelo e salva
+    // POST - Retorna o ResponseDTO
     @PostMapping
-    public ResponseEntity<IncidenteModel> criar(@Valid @RequestBody IncidenteRequestDTO dto) {
+    public ResponseEntity<IncidenteResponseDTO> criar(@Valid @RequestBody IncidenteRequestDTO dto) {
         IncidenteModel novo = new IncidenteModel();
         copiarDtoParaModelo(dto, novo);
-        return ResponseEntity.status(HttpStatus.CREATED).body(service.salvar(novo));
+        IncidenteModel salvo = service.salvar(novo);
+        return ResponseEntity.status(HttpStatus.CREATED).body(new IncidenteResponseDTO(salvo));
     }
 
-    // LISTAR TODOS (GET)
+    // GET Geral - Converte a lista de Modelos para lista de ResponseDTOs
     @GetMapping
-    public List<IncidenteModel> listar() {
-        return service.listarTodos();
+    public List<IncidenteResponseDTO> listar() {
+        return service.listarTodos().stream().map(IncidenteResponseDTO::new).toList();
     }
 
-    // BUSCAR POR ID (GET)
+    // GET por ID - Retorna o ResponseDTO se achar
     @GetMapping("/{id}")
-    public ResponseEntity<IncidenteModel> buscar(@PathVariable Long id) {
+    public ResponseEntity<IncidenteResponseDTO> buscar(@PathVariable Long id) {
         return service.buscarPorId(id)
-                .map(ResponseEntity::ok)
+                .map(modelo -> ResponseEntity.ok(new IncidenteResponseDTO(modelo)))
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    // ATUALIZAR (PUT) - Recebe o ID e o DTO com os novos dados
+    // PUT - Retorna o ResponseDTO atualizado
     @PutMapping("/{id}")
-    public ResponseEntity<IncidenteModel> atualizar(@PathVariable Long id, @Valid @RequestBody IncidenteRequestDTO dto) {
+    public ResponseEntity<IncidenteResponseDTO> atualizar(@PathVariable Long id, @Valid @RequestBody IncidenteRequestDTO dto) {
         Optional<IncidenteModel> existente = service.buscarPorId(id);
         if (existente.isEmpty()) {
             return ResponseEntity.notFound().build();
         }
 
         IncidenteModel modelo = existente.get();
-        copiarDtoParaModelo(dto, modelo); // Atualiza os campos do modelo com os dados do DTO
+        copiarDtoParaModelo(dto, modelo);
+        IncidenteModel atualizado = service.salvar(modelo);
 
-        return ResponseEntity.ok(service.salvar(modelo));
+        return ResponseEntity.ok(new IncidenteResponseDTO(atualizado));
     }
 
-    // DELETAR (DELETE)
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deletar(@PathVariable Long id) {
         if (service.buscarPorId(id).isEmpty()) {
@@ -65,7 +67,6 @@ public class IncidenteController {
         return ResponseEntity.noContent().build();
     }
 
-    // Método auxiliar para evitar repetição de código (copia os dados do DTO para a Entidade)
     private void copiarDtoParaModelo(IncidenteRequestDTO dto, IncidenteModel modelo) {
         modelo.setGravidade(dto.gravidade());
         modelo.setDataHora(dto.dataHora());
