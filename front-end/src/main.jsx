@@ -1,9 +1,27 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import App from './App.jsx' // Certifique-se que o caminho pro seu App está certo
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { BrowserRouter } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
 
-ReactDOM.createRoot(document.getElementById('root')).render(
+import App from "./App";
+
+import "react-toastify/dist/ReactToastify.css";
+import "./App.css";
+
+ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-)
+    <BrowserRouter>
+      <App />
+
+      <ToastContainer
+        position="top-right"
+        autoClose={2500}
+        hideProgressBar={false}
+        newestOnTop
+        closeOnClick
+        pauseOnHover
+        theme="colored"
+      />
+    </BrowserRouter>
+  </React.StrictMode>
+);
