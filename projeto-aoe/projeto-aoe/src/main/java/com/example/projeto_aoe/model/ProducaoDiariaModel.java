@@ -12,19 +12,23 @@ public class ProducaoDiariaModel {
 
     @Column(nullable = false)
     private String plataforma;
+
     @Column(nullable = false)
     private String data;
+
     @Column(name = "barris_petroleo", nullable = false)
     private int barrisPetroleo;
+
     @Column(name = "metros_cubicos_gas", nullable = false)
     private double metrosCubicosGas;
+
     @Column(name = "meta_atingida", nullable = false)
-    private int metaAtingida;
+    private Boolean metaAtingida; // <--- Alterado de int para Boolean
 
     public ProducaoDiariaModel() {
     }
 
-    public ProducaoDiariaModel(Long id, String plataforma, String data, int barrisPetroleo, double metrosCubicosGas, int metaAtingida) {
+    public ProducaoDiariaModel(Long id, String plataforma, String data, int barrisPetroleo, double metrosCubicosGas, Boolean metaAtingida) {
         this.id = id;
         this.plataforma = plataforma;
         this.data = data;
@@ -73,11 +77,11 @@ public class ProducaoDiariaModel {
         this.metrosCubicosGas = metrosCubicosGas;
     }
 
-    public int getMetaAtingida() {
+    public Boolean getMetaAtingida() { // <--- Alterado o retorno para Boolean
         return metaAtingida;
     }
 
-    public void setMetaAtingida(int metaAtingida) {
+    public void setMetaAtingida(Boolean metaAtingida) { // <--- Corrigido o método que estava vazio
+        this.metaAtingida = metaAtingida;
     }
 }
-

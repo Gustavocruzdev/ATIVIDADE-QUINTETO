@@ -1,9 +1,6 @@
 package com.example.projeto_aoe.dto;
 
 import com.example.projeto_aoe.model.ProducaoDiariaModel;
-import org.springframework.http.ResponseEntity;
-
-import java.util.Optional;
 
 public class ProducaoDiariaResponseDTO {
 
@@ -12,12 +9,12 @@ public class ProducaoDiariaResponseDTO {
     private String data;
     private int barrisPetroleo;
     private Double metrosCubicosGas;
-    private int metaAtingida;
+    private Boolean metaAtingida; // <--- Alterado de int para Boolean
 
     public ProducaoDiariaResponseDTO() {
     }
 
-    public ProducaoDiariaResponseDTO(Long id, String plataforma, String data, int barrisPetroleo, Double metrosCubicosGas, int metaAtingida) {
+    public ProducaoDiariaResponseDTO(Long id, String plataforma, String data, int barrisPetroleo, Double metrosCubicosGas, Boolean metaAtingida) {
         this.id = id;
         this.plataforma = plataforma;
         this.data = data;
@@ -26,7 +23,14 @@ public class ProducaoDiariaResponseDTO {
         this.metaAtingida = metaAtingida;
     }
 
+    // Corrigido: Agora preenche o DTO automaticamente quando o Service retornar o Model
     public ProducaoDiariaResponseDTO(ProducaoDiariaModel model) {
+        this.id = model.getId();
+        this.plataforma = model.getPlataforma();
+        this.data = model.getData();
+        this.barrisPetroleo = model.getBarrisPetroleo();
+        this.metrosCubicosGas = model.getMetrosCubicosGas();
+        this.metaAtingida = model.getMetaAtingida();
     }
 
     public Long getId() {
@@ -69,12 +73,11 @@ public class ProducaoDiariaResponseDTO {
         this.metrosCubicosGas = metrosCubicosGas;
     }
 
-    public int getMetaAtingida() {
+    public Boolean getMetaAtingida() { // <--- Retorno alterado para Boolean
         return metaAtingida;
     }
 
-    public void setMetaAtingida(int metaAtingida) {
+    public void setMetaAtingida(Boolean metaAtingida) { // <--- Parâmetro alterado para Boolean
         this.metaAtingida = metaAtingida;
     }
-
 }

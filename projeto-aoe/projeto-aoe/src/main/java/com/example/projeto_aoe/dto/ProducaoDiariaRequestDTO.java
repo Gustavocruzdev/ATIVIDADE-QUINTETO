@@ -6,12 +6,12 @@ public class ProducaoDiariaRequestDTO {
     private String data;
     private int barrisPetroleo;
     private Double metrosCubicosGas;
-    private int metaAtingida;
+    private Boolean metaAtingida; // <--- Alterado de int para Boolean
 
     public ProducaoDiariaRequestDTO() {
     }
 
-    public ProducaoDiariaRequestDTO(String plataforma, String data, int barrisPetroleo, Double metrosCubicosGas, int metaAtingida) {
+    public ProducaoDiariaRequestDTO(String plataforma, String data, int barrisPetroleo, Double metrosCubicosGas, Boolean metaAtingida) {
         this.plataforma = plataforma;
         this.data = data;
         this.barrisPetroleo = barrisPetroleo;
@@ -51,11 +51,11 @@ public class ProducaoDiariaRequestDTO {
         this.metrosCubicosGas = metrosCubicosGas;
     }
 
-    public int getMetaAtingida() {
+    public Boolean getMetaAtingida() { // <--- Retorno alterado para Boolean
         return metaAtingida;
     }
 
-    public void setMetaAtingida(int metaAtingida) {
+    public void setMetaAtingida(Boolean metaAtingida) { // <--- Parâmetro alterado para Boolean
         this.metaAtingida = metaAtingida;
     }
 }
