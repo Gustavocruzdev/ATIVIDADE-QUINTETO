@@ -1,0 +1,120 @@
+    .escala-container {
+    width: 100%;
+    min-height: 100vh;
+    background: #f5f7fb;
+    padding: 40px 20px;
+    }
+
+    .escala-header {
+    max-width: 1300px;
+    margin: 0 auto 30px auto;
+    background-color: #003B73;
+    color: #ffffff;
+    padding: 35px;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.06);
+    }
+
+    .escala-header h1 {
+    font-size: 2.2rem;
+    margin-bottom: 10px;
+    font-weight: 700;
+    }
+
+    .escala-header p {
+    color: #e0e6ed;
+    font-size: 1.05rem;
+    line-height: 1.6;
+    }
+
+    .mensagem-erro {
+    max-width: 1300px;
+    margin: 0 auto 20px auto;
+    background-color: #fce8e6;
+    color: #a83232;
+    padding: 15px 20px;
+    border-radius: 10px;
+    border-left: 4px solid #a83232;
+    font-weight: 500;
+    }
+
+    .escala-conteudo {
+    max-width: 1300px;
+    margin: 0 auto;
+    background: #ffffff;
+    border-radius: 20px;
+    border: 1px solid #ddd;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.06);
+    overflow: hidden;
+    }
+
+    .tabela-tripulacao {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    font-size: 15px;
+    }
+
+    .tabela-tripulacao th {
+    background-color: #003B73;
+    color: #ffffff;
+    padding: 18px 20px;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 0.5px;
+    }
+
+    .tabela-tripulacao td {
+    padding: 18px 20px;
+    border-bottom: 1px solid #ddd;
+    color: #333333;
+    }
+
+    .tabela-tripulacao tr:last-child td {
+    border-bottom: none;
+    }
+
+    .tabela-tripulacao tr:nth-child(even) {
+    background-color: #f9fafc;
+    }
+
+    .tabela-tripulacao tr:hover {
+    background-color: #f0f4f8;
+    transition: background-color 0.2s ease;
+    }
+
+    .tag-regime {
+    display: inline-block;
+    background-color: #e6f4ea;
+    color: #137333;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-align: center;
+    }
+
+    .carregando {
+    text-align: center;
+    padding: 60px !important;
+    font-size: 1.1rem;
+    color: #003B73;
+    font-weight: 500;
+    }
+
+    @media (max-width: 900px) {
+    .escala-header h1 {
+        font-size: 1.8rem;
+    }
+    
+    .escala-conteudo {
+        overflow-x: auto;
+    }
+    
+    .tabela-tripulacao th, 
+    .tabela-tripulacao td {
+        padding: 14px 15px;
+        white-space: nowrap;
+    }
+    }
