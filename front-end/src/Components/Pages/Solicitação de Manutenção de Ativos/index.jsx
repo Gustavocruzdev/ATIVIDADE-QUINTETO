@@ -1,5 +1,5 @@
+
     import React, { useState } from 'react';
-    import api from '../../service/api';
     import './style.css';
 
     export default function SolicitacaoManutencaoAtivos() {
@@ -59,3 +59,4 @@
         </div>
     );
     }
+

@@ -1,5 +1,6 @@
+
 import React from 'react';
-import "style.css"
+import "./style.css"
 
 export default function ContatoSuporte() {
     const contatosBases = [
@@ -40,3 +41,4 @@ export default function ContatoSuporte() {
     </div>
     );
 }
+
