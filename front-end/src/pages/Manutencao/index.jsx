@@ -17,15 +17,13 @@ export default function SolicitacaoManutencaoAtivos() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      
+     
       await api.post('/api/manutencao', formData);
       
       alert('⚙️ Ordem de Serviço aberta e encaminhada ao time de Engenharia de Confiabilidade!');
       
-     
       setFormData({ equipamentoId: '', criticidade: '', descricaoFalha: '' });
     } catch (error) {
-      
       const errorMsg = error.response?.data?.message || 'Falha ao processar abertura de manutenção.';
       alert(`Erro na solicitação: ${errorMsg}`);
     }
@@ -40,7 +38,6 @@ export default function SolicitacaoManutencaoAtivos() {
         <form onSubmit={handleSubmit} className="aoe-form-grid">
           <div className="aoe-input-group">
             <label>Código / Tag do Ativo (ID)</label>
-            {/* Atualizado o name e value para equipamentoId */}
             <input name="equipamentoId" value={formData.equipamentoId} placeholder="Ex: TURB-01, BROCA-X5" required onChange={handleChange} />
           </div>
 
