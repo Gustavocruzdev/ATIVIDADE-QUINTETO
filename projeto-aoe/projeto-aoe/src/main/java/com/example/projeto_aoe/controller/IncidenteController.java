@@ -19,6 +19,7 @@ public class IncidenteController {
     @Autowired
     private IncidenteService service;
 
+    // CRIAR (POST) - Recebe o DTO do React, converte para o Modelo e salva
     @PostMapping
     public ResponseEntity<IncidenteModel> criar(@Valid @RequestBody IncidenteRequestDTO dto) {
         IncidenteModel novo = new IncidenteModel();
@@ -26,11 +27,13 @@ public class IncidenteController {
         return ResponseEntity.status(HttpStatus.CREATED).body(service.salvar(novo));
     }
 
+    // LISTAR TODOS (GET)
     @GetMapping
     public List<IncidenteModel> listar() {
         return service.listarTodos();
     }
 
+    // BUSCAR POR ID (GET)
     @GetMapping("/{id}")
     public ResponseEntity<IncidenteModel> buscar(@PathVariable Long id) {
         return service.buscarPorId(id)
@@ -38,17 +41,21 @@ public class IncidenteController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
+    // ATUALIZAR (PUT) - Recebe o ID e o DTO com os novos dados
     @PutMapping("/{id}")
     public ResponseEntity<IncidenteModel> atualizar(@PathVariable Long id, @Valid @RequestBody IncidenteRequestDTO dto) {
         Optional<IncidenteModel> existente = service.buscarPorId(id);
         if (existente.isEmpty()) {
             return ResponseEntity.notFound().build();
         }
+
         IncidenteModel modelo = existente.get();
-        copiarDtoParaModelo(dto, modelo);
+        copiarDtoParaModelo(dto, modelo); // Atualiza os campos do modelo com os dados do DTO
+
         return ResponseEntity.ok(service.salvar(modelo));
     }
 
+    // DELETAR (DELETE)
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deletar(@PathVariable Long id) {
         if (service.buscarPorId(id).isEmpty()) {
@@ -58,6 +65,7 @@ public class IncidenteController {
         return ResponseEntity.noContent().build();
     }
 
+    // Método auxiliar para evitar repetição de código (copia os dados do DTO para a Entidade)
     private void copiarDtoParaModelo(IncidenteRequestDTO dto, IncidenteModel modelo) {
         modelo.setGravidade(dto.gravidade());
         modelo.setDataHora(dto.dataHora());
