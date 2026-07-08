@@ -85,7 +85,7 @@ export default function Home() {
         <div className="hero-image">
 
           <img
-            src="https://images.unsplash.com/photo-1513828583688-c52646db42da?auto=format&fit=crop&w=1200&q=80"
+            src="https://www.portosenavios.com.br/images/260104-FPSO-P-78_Foto-DivulgaCao_Petrobras.jpg"
             alt="Plataforma Offshore"
           />
 
