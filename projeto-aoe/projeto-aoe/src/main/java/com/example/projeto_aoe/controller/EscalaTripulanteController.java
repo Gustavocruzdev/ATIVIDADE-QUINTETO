@@ -11,6 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/escala")
+@CrossOrigin(origins = "*")
 public class EscalaTripulanteController {
 
     @Autowired
@@ -18,7 +19,7 @@ public class EscalaTripulanteController {
 
     @PostMapping
     public ResponseEntity<EscalaTripulanteResponseDTO> criar(@RequestBody EscalaTripulanteRequestDTO dto) {
-        return ResponseEntity.ok(service.criar(dto));
+        return ResponseEntity.status(201).body(service.criar(dto));
     }
 
     @GetMapping
