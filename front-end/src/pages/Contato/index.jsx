@@ -1,44 +1,103 @@
+import "./style.css";
+import {
+  FaPhoneAlt,
+  FaEnvelope,
+  FaMapMarkerAlt,
+  FaClock,
+} from "react-icons/fa";
 
-import React from 'react';
-import "./style.css"
+export default function Contato() {
+  return (
+    <div className="contato">
 
-export default function ContatoSuporte() {
-    const contatosBases = [
-    { base: "Base Macaé", local: "Rio de Janeiro", telefone: "+55 (22) 3321-XXXX", email: "suporte.macae@atlantic.com" },
-    { base: "Base Santos", local: "São Paulo", telefone: "+55 (13) 3210-XXXX", email: "suporte.santos@atlantic.com" },
-    { base: "Base Rio de Janeiro", local: "Sede Corporativa", telefone: "+55 (21) 2122-XXXX", email: "suporte.rj@atlantic.com" }
-    ];
+      <section className="hero-contato">
 
-    return (
-    <div className="contato-container">
-        <header className="contato-header">
-        <h1>Contato e Suporte de Emergência</h1>
-        <p className="alerta-urgente">🚨 LINHA DE CONTINGÊNCIA INTERNACIONAL 24H: 0800-770-AOE-911</p>
-        </header>
+        <div className="hero-text">
+          <span className="tag">Fale Conosco</span>
 
-        <main className="contato-conteudo">
-        <section className="secao-bases">
-            <h2>Canais de Comunicação Direta (Bases em Terra)</h2>
-            <div className="cards-grid">
-            {contatosBases.map((item, index) => (
-                <div key={index} className="card-contato">
-                <h3>{item.base}</h3>
-                <p><strong>Localização:</strong> {item.local}</p>
-                <p><strong>Telefone:</strong> {item.telefone}</p>
-                <p><strong>E-mail:</strong> {item.email}</p>
-                </div>
-            ))}
-            </div>
-        </section>
+          <h1>Estamos prontos para ajudar sua operação.</h1>
 
-        <section className="secao-procedimento">
-            <h2>Protocolo de Emergência Offshore</h2>
-            <blockquote>
-            "Em caso de incidentes graves na plataforma, acione o alarme geral local e faça o reporte imediato via rádio para o Centro de Operações Integradas (COI) em terra."
-            </blockquote>
-        </section>
-        </main>
+          <p>
+            Entre em contato com nossa equipe para esclarecer dúvidas,
+            reportar problemas ou solicitar informações sobre a plataforma.
+          </p>
+
+        </div>
+
+      </section>
+
+      <section className="contato-content">
+
+        <div className="info">
+
+          <div className="card-info">
+            <FaPhoneAlt className="icon" />
+            <h3>Telefone</h3>
+            <p>(71) 3333-4820</p>
+          </div>
+
+          <div className="card-info">
+            <FaEnvelope className="icon" />
+            <h3>E-mail</h3>
+            <p>contato@maritimosalvador.com.br</p>
+          </div>
+
+          <div className="card-info">
+            <FaMapMarkerAlt className="icon" />
+            <h3>Endereço</h3>
+            <p>
+              Avenida da França, 450<br />
+              Comércio - Salvador/BA
+            </p>
+          </div>
+
+          <div className="card-info">
+            <FaClock className="icon" />
+            <h3>Horário</h3>
+            <p>
+              Segunda à Sexta<br />
+              08:00 às 18:00
+            </p>
+          </div>
+
+        </div>
+
+        <div className="formulario">
+
+          <h2>Envie sua mensagem</h2>
+
+          <form>
+
+            <input
+              type="text"
+              placeholder="Nome"
+            />
+
+            <input
+              type="email"
+              placeholder="E-mail"
+            />
+
+            <input
+              type="text"
+              placeholder="Assunto"
+            />
+
+            <textarea
+              rows="6"
+              placeholder="Digite sua mensagem..."
+            ></textarea>
+
+            <button>
+              Enviar Mensagem
+            </button>
+
+          </form>
+
+        </div>
+
+      </section>
+
     </div>
-    );
+  );
 }
-

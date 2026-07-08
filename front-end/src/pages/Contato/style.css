@@ -1,0 +1,130 @@
+.contato{
+    width:100%;
+    min-height:100vh;
+    background:#f5f7fb;
+}
+
+.hero-contato{
+    max-width:1300px;
+    margin:auto;
+    padding:70px 30px 40px;
+}
+
+.hero-text h1{
+    color:#003B73;
+    font-size:3rem;
+    margin:20px 0;
+}
+
+.hero-text p{
+    color:#666;
+    max-width:700px;
+    line-height:1.8;
+}
+
+.tag{
+    background:#003B73;
+    color:white;
+    padding:8px 18px;
+    border-radius:40px;
+    font-weight:600;
+}
+
+.contato-content{
+    max-width:1300px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:360px 1fr;
+    gap:40px;
+    padding:20px 30px 80px;
+}
+
+.info{
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+}
+
+.card-info{
+    background:white;
+    padding:25px;
+    border-radius:18px;
+    box-shadow:0 15px 35px rgba(0,0,0,.08);
+}
+
+.card-info h3{
+    margin:15px 0 10px;
+    color:#003B73;
+}
+
+.card-info p{
+    color:#666;
+    line-height:1.7;
+}
+
+.icon{
+    color:#003B73;
+    font-size:32px;
+}
+
+.formulario{
+    background:white;
+    padding:40px;
+    border-radius:20px;
+    box-shadow:0 15px 35px rgba(0,0,0,.08);
+}
+
+.formulario h2{
+    color:#003B73;
+    margin-bottom:30px;
+}
+
+.formulario form{
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+}
+
+.formulario input,
+.formulario textarea{
+    width:100%;
+    border:1px solid #ddd;
+    border-radius:10px;
+    padding:15px;
+    font-size:15px;
+    outline:none;
+    transition:.3s;
+}
+
+.formulario input:focus,
+.formulario textarea:focus{
+    border-color:#003B73;
+}
+
+.formulario button{
+    background:#003B73;
+    color:white;
+    border:none;
+    padding:16px;
+    border-radius:10px;
+    font-size:16px;
+    font-weight:600;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.formulario button:hover{
+    background:#00539f;
+}
+
+@media(max-width:900px){
+
+.contato-content{
+    grid-template-columns:1fr;
+}
+
+.hero-text h1{
+    font-size:2.2rem;
+}
+
+}

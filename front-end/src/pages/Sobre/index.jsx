@@ -1,43 +1,93 @@
+import "./style.css";
+import { FaAnchor, FaShip, FaShieldAlt, FaMapMarkedAlt } from "react-icons/fa";
 
-import React from 'react';
-import './style.css';
+export default function Sobre() {
+  return (
+    <div className="sobre">
 
-export default function QuemSomosSustentabilidade() {
-    return (
-        <div className="aoe-container">
-        <section className="aoe-hero-section">
-            <h1>Atlantic Offshore Energy</h1>
-            <p className="aoe-tagline">Energia com responsabilidade e excelência no Pré-Sal</p>
-        </section>
+      <section className="sobre-hero">
+        <div className="sobre-texto">
+          <span className="tag">Sobre a Plataforma</span>
 
-        <section className="aoe-content-grid">
-            <div className="aoe-card">
-            <h2>Nossa Missão</h2>
-            <p>
-                Explorar e produzir hidrocarbonetos na Bacia de Santos com máxima eficiência operacional, 
-                garantindo o suprimento energético nacional através de tecnologias de ponta em águas ultraprofundas.
-            </p>
-            </div>
+          <h1>
+            Monitoramento Inteligente das Operações Marítimas em Salvador
+          </h1>
 
-            <div className="aoe-card">
-            <h2>Segurança Offshore (HSE)</h2>
-            <p>
-                A vida humana e a integridade operacional estão acima de qualquer meta de produção. 
-                Adotamos políticas rigorosas de mitigação de risco e redundância de sistemas em todas as nossas 
-                plataformas de perfuração e produção.
-            </p>
-            </div>
-
-            <div className="aoe-card aoe-card-full">
-            <h2>Preservação e Sustentabilidade Marinha</h2>
-            <p>
-                Operar no ecossistema do Pré-Sal exige respeito absoluto à biodiversidade da Bacia de Santos. 
-                Mantemos programas contínuos de monitoramento da qualidade da água, controle estrito de emissões atmosféricas 
-                e planos avançados de contingência ambiental para neutralizar qualquer impacto no ambiente marinho.
-            </p>
-            </div>
-        </section>
+          <p>
+            Nossa plataforma foi desenvolvida para centralizar informações de
+            produção, manutenção, incidentes e monitoramento operacional,
+            proporcionando maior segurança, eficiência e rapidez na tomada de
+            decisões.
+          </p>
         </div>
-    );
-}
 
+        <div className="sobre-box">
+          <FaAnchor size={70}/>
+        </div>
+      </section>
+
+      <section className="missao">
+
+        <div className="title">
+          <h2>Nossos Valores</h2>
+          <p>Compromisso com eficiência, segurança e inovação.</p>
+        </div>
+
+        <div className="cards-sobre">
+
+          <div className="card-sobre">
+            <FaShieldAlt className="icone"/>
+            <h3>Segurança</h3>
+            <p>
+              Monitoramento contínuo das operações para reduzir riscos e garantir
+              maior confiabilidade.
+            </p>
+          </div>
+
+          <div className="card-sobre">
+            <FaShip className="icone"/>
+            <h3>Operações</h3>
+            <p>
+              Gestão integrada das atividades marítimas com indicadores em tempo
+              real para apoio operacional.
+            </p>
+          </div>
+
+          <div className="card-sobre">
+            <FaMapMarkedAlt className="icone"/>
+            <h3>Localização</h3>
+            <p>
+              Atuação voltada para a região portuária de Salvador, atendendo
+              operações distribuídas em diferentes áreas da cidade.
+            </p>
+          </div>
+
+        </div>
+
+      </section>
+
+      <section className="historia">
+
+        <div className="title">
+          <h2>Nossa História</h2>
+        </div>
+
+        <p>
+          A plataforma nasceu com o objetivo de facilitar o gerenciamento das
+          operações marítimas e industriais na região de Salvador. Reunindo
+          informações de produção, escalas de equipes, manutenção preventiva e
+          corretiva e registro de incidentes, o sistema oferece uma visão única
+          para gestores e operadores.
+        </p>
+
+        <p>
+          Com uma interface intuitiva e indicadores atualizados, buscamos
+          proporcionar mais produtividade, rastreabilidade e organização para
+          todas as áreas envolvidas nas operações.
+        </p>
+
+      </section>
+
+    </div>
+  );
+}
