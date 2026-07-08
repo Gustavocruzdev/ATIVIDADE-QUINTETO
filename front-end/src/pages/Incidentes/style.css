@@ -85,9 +85,9 @@
     box-shadow: 0 0 0 4px rgba(0, 59, 115, 0.1);
     }
 
-    .aoe-btn-submit.aoe-btn-danger {
+    .aoe-btn-submit {
     grid-column: span 2;
-    background: #d9534f;
+    background: #003B73;
     color: #ffffff;
     border: none;
     padding: 16px;
@@ -95,18 +95,18 @@
     font-size: 16px;
     font-weight: 600;
     cursor: pointer;
-    box-shadow: 0 4px 12px rgba(217, 83, 79, 0.2);
+    box-shadow: 0 4px 12px rgba(0, 59, 115, 0.15);
     transition: all 0.3s ease;
     margin-top: 10px;
     }
 
-    .aoe-btn-submit.aoe-btn-danger:hover {
-    background: #c9302c;
+    .aoe-btn-submit:hover {
+    background: #00539f;
     transform: translateY(-2px);
-    box-shadow: 0 6px 18px rgba(217, 83, 79, 0.3);
+    box-shadow: 0 6px 18px rgba(0, 59, 115, 0.25);
     }
 
-    .aoe-btn-submit.aoe-btn-danger:active {
+    .aoe-btn-submit:active {
     transform: translateY(0);
     }
 
@@ -124,7 +124,7 @@
         grid-column: span 1;
     }
     
-    .aoe-btn-submit.aoe-btn-danger {
+    .aoe-btn-submit {
         grid-column: span 1;
     }
     
