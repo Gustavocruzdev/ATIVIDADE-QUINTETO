@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import api from '../../services/api'; 
+import api from '../../services/api';
 import './style.css';
 
 export default function SolicitacaoManutencaoAtivos() {
   const [formData, setFormData] = useState({
-    equipamentoId: '', 
+    equipamentoId: '',
     criticidade: '',
     descricaoFalha: ''
   });
@@ -17,7 +17,6 @@ export default function SolicitacaoManutencaoAtivos() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-     
       await api.post('/api/manutencao', formData);
       
       alert('⚙️ Ordem de Serviço aberta e encaminhada ao time de Engenharia de Confiabilidade!');
