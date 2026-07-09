@@ -93,7 +93,6 @@ export default function Layout({ children }) {
           </div>
 
           <div className="user">
-            👤 Anderson
           </div>
         </header>
 

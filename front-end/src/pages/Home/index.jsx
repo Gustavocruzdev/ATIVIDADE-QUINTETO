@@ -4,7 +4,6 @@ import {
   FaShieldAlt,
   FaUsers,
   FaIndustry,
-  FaArrowRight,
   FaMapMarkerAlt,
 } from "react-icons/fa";
 
@@ -56,11 +55,8 @@ export default function Home() {
 
   return (
     <main className="home">
-
       <section className="hero">
-
         <div className="hero-text">
-
           <span className="tag">
             Atlantic Offshore Energy
           </span>
@@ -74,35 +70,21 @@ export default function Home() {
             segurança operacional, manutenção preventiva e gestão
             das equipes embarcadas.
           </p>
-
-          <button>
-            Acessar Sistema
-            <FaArrowRight />
-          </button>
-
         </div>
 
         <div className="hero-image">
-
           <img
             src="https://www.portosenavios.com.br/images/260104-FPSO-P-78_Foto-DivulgaCao_Petrobras.jpg"
             alt="Plataforma Offshore"
           />
-
         </div>
-
       </section>
 
       <section className="cards">
-
         {indicadores.map((item) => (
-
           <div className="card" key={item.titulo}>
-
             <div className="icon">
-
               {item.icone}
-
             </div>
 
             <h2>{item.valor}</h2>
@@ -110,76 +92,51 @@ export default function Home() {
             <h3>{item.titulo}</h3>
 
             <p>{item.descricao}</p>
-
           </div>
-
         ))}
-
       </section>
 
       <section className="operations">
-
         <div className="title">
-
           <h2>Plataformas Monitoradas</h2>
 
           <p>
             Informações atualizadas das unidades marítimas.
           </p>
-
         </div>
 
         <div className="platform-grid">
-
           {plataformas.map((item) => (
-
             <div className="platform-card" key={item.nome}>
-
               <div className="platform-header">
-
                 <h3>{item.nome}</h3>
 
                 <span>{item.status}</span>
-
               </div>
 
               <div className="platform-body">
-
                 <FaMapMarkerAlt />
 
                 <p>{item.local}</p>
-
               </div>
-
             </div>
-
           ))}
-
         </div>
-
       </section>
 
       <section className="about-system">
-
         <div>
-
           <h2>
             Gestão Inteligente das Operações
           </h2>
 
           <p>
-
-            O sistema Atlantic Offshore Energy integra
-            monitoramento operacional, controle de incidentes,
-            solicitações de manutenção, produção diária e
+            O sistema Atlantic Offshore Energy integra monitoramento operacional,
+            controle de incidentes, solicitações de manutenção, produção diária e
             gestão das escalas de embarque em um único portal.
-
           </p>
-
         </div>
-
       </section>
-
     </main>
   );
 }
