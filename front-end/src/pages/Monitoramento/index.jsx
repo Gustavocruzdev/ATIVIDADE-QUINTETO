@@ -4,10 +4,8 @@ import './style.css';
 export default function MonitoramentoProducao() {
   const [dadosProducao, setDadosProducao] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
 
-  // Endpoint do Spring Boot (Substitua pela sua URL real)
-  const API_URL = 'http://localhost:8080/api/producao-diaria';
+  const API_URL = 'http://localhost:8080/api/producao';
 
   useEffect(() => {
     fetch(API_URL)
@@ -23,11 +21,10 @@ export default function MonitoramentoProducao() {
       })
       .catch((err) => {
         console.error(err);
-        // Fallback de dados para testes se a API do Spring Boot estiver desligada
         setDadosProducao([
-          { id: 1, plataforma: 'P-51', petroleoBarris: 45000, gasM3: 120000, metaAtingida: true },
-          { id: 2, plataforma: 'P-53', petroleoBarris: 38000, gasM3: 95000, metaAtingida: true },
-          { id: 3, plataforma: 'P-62', petroleoBarris: 12000, gasM3: 30000, metaAtingida: false }
+          { id: 1, plataforma: 'P-51', barrisPetroleo: 45000, metrosCubicosGas: 120000, metaAtingida: true },
+          { id: 2, plataforma: 'P-53', barrisPetroleo: 38000, metrosCubicosGas: 95000, metaAtingida: true },
+          { id: 3, plataforma: 'P-62', barrisPetroleo: 12000, metrosCubicosGas: 30000, metaAtingida: false }
         ]);
         setLoading(false);
       });
@@ -42,7 +39,6 @@ export default function MonitoramentoProducao() {
         <p>Dados de extração em tempo real integrados ao banco de dados MySQL</p>
       </header>
 
-      {/* Tabela de Dados */}
       <div className="table-responsive">
         <table className="producao-table">
           <thead>
@@ -57,8 +53,8 @@ export default function MonitoramentoProducao() {
             {dadosProducao.map((item) => (
               <tr key={item.id}>
                 <td><strong>{item.plataforma}</strong></td>
-                <td>{item.petroleoBarris.toLocaleString()} bbl</td>
-                <td>{item.gasM3.toLocaleString()} m³</td>
+                <td>{item.barrisPetroleo ? item.barrisPetroleo.toLocaleString() : 0} bbl</td>
+                <td>{item.metrosCubicosGas ? item.metrosCubicosGas.toLocaleString() : 0} m³</td>
                 <td>
                   <span className={`badge ${item.metaAtingida ? 'meta-ok' : 'meta-atencao'}`}>
                     {item.metaAtingida ? 'Meta Atingida' : 'Abaixo da Meta'}

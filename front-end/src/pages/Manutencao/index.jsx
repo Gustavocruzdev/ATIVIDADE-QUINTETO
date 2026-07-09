@@ -17,11 +17,9 @@ export default function SolicitacaoManutencaoAtivos() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-     
-      await api.post('/api/manutencao', formData);
+      await api.post('/manutencao', formData);
       
       alert('⚙️ Ordem de Serviço aberta e encaminhada ao time de Engenharia de Confiabilidade!');
-      
       setFormData({ equipamentoId: '', criticidade: '', descricaoFalha: '' });
     } catch (error) {
       const errorMsg = error.response?.data?.message || 'Falha ao processar abertura de manutenção.';
