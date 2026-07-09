@@ -18,16 +18,27 @@
     };
 
     const handleSubmit = async (e) => {
-        e.preventDefault();
-        try {
-        await api.post('/incidentes', formData);
+    e.preventDefault();
+    try {
+        // Junta os campos 'data' e 'hora' no formato esperado pelo DTO do backend
+        const dadosFormatados = {
+            gravidade: formData.gravidade,
+            plataforma: formData.plataforma,
+            descricao: formData.descricao,
+            acoesImediatas: formData.acoesImediatas,
+            dataHora: `${formData.data}T${formData.hora}:00` // Concatena gerando ISO 8601
+        };
+
+        // Envia os dados formatados para a API
+        await api.post('/incidentes', dadosFormatados);
+        
         alert('⚠️ Incidente Operacional registrado com sucesso no sistema AOE!');
         setFormData({ gravidade: '', data: '', hora: '', plataforma: '', descricao: '', acoesImediatas: '' });
-        } catch (error) {
+    } catch (error) {
         const errorMsg = error.response?.data?.mensagem || 'Falha ao conectar com o servidor da base terrestre.';
         alert(`Erro no registro: ${errorMsg}`);
-        }
-    };
+    }
+};
 
     return (
         <div className="aoe-form-container">
